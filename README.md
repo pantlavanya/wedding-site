@@ -1,4 +1,4 @@
-# wedding-site
+# Wedding Site
 
 Install Module <br />
 Django (1.8) <br />
