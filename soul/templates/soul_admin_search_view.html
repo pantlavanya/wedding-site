@@ -1,0 +1,58 @@
+{% extends "admin/base_site.html" %}
+{% load i18n admin_static %}
+
+{% block extrahead %}{{ block.super }}
+<script type="text/javascript" src="{% url 'admin:jsi18n' %}"></script>
+{{ media }}
+{% endblock %}
+
+{% block extrastyle %}{{ block.super }}
+<link rel="stylesheet" type="text/css" href="{% static "admin/css/forms.css" %}" />
+{% endblock %}
+
+{% block coltype %}colM{% endblock %}
+
+{% block bodyclass %}{{ block.super }} {% endblock %}
+
+{% block breadcrumbs %}
+
+{% endblock %}
+
+{% block content %}
+<div id="content-main">
+<h1>Search</h1>
+<form enctype="multipart/form-data" action="" method="post" id="member_form" novalidate="">
+    <input name="csrfmiddlewaretoken" value="{{ csrf_token }}" type="hidden">
+    <fieldset class="module aligned ">
+    <h2>{{ search_name }}</h2>
+    {% for item in search_params_list %}
+
+        <div class="form-row field-{{ item.name }}">
+            <div>
+                <label class="required" for="id_first_name">{{ item.label }}</label>
+                {% if item.type == "text" %}
+                    <input class="vTextField"
+                           type="text"
+                           id="id_first_name"
+                           placeholder="{{ item.placeholder }}"
+                           name="{{ item.name }}"
+                           value="" />
+                    {% if item.class = "vDateField" %}
+                        <span class="datetimeshortcuts">&nbsp;
+                            <a href="javascript:DateTimeShortcuts.handleCalendarQuickLink(0, 0);">Today</a>
+                                &nbsp;|&nbsp;<a id="calendarlink0" href="javascript:DateTimeShortcuts.openCalendar(0);">
+                                <img alt="Calendar" src="/static/admin/img/icon_calendar.gif"></a>
+                        </span>
+                    {% endif %}
+                {% endif %}
+            </div>
+        </div>
+
+    {% endfor %}
+    </fieldset>
+    <div class="submit-row">
+        <input value="Search" class="default" name="_save" type="submit">
+    </div>
+</form>
+</div>
+{% endblock %}
