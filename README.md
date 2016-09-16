@@ -1,7 +1,7 @@
 # wedding-site
 
-Install Module
-Django (1.8)
-django-extensions (1.7.3)
-ipdb (0.10.1)
-Pillow (3.3.1)
+Install Module <br />
+Django (1.8) <br />
+django-extensions (1.7.3) <br />
+ipdb (0.10.1) <br />
+Pillow (3.3.1) <br />
