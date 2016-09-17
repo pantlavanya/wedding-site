@@ -3,7 +3,7 @@ from soul.models import SoulModel
 
 # Create your models here.
 class Config(SoulModel):
-    name = models.CharField(max_length=50, unique=True, db_index=True)
+    key = models.CharField(max_length=50, unique=True, db_index=True)
     value = models.TextField(null=True)
 
     class Meta:
@@ -11,8 +11,8 @@ class Config(SoulModel):
         db_table = "config_config"
 
     def __unicode__(self):
-        return self.name
+        return self.key
 
     def save(self, force_insert=False, force_update=False, using=None):
-        self.name = self.name.upper().replace(" ","")
+        self.key = self.key.upper().replace(" ","")
         super(Config, self).save(force_insert, force_update, using)

@@ -5,15 +5,14 @@ from django.http import HttpResponseRedirect
 
 # Register your models here.
 class ConfigAdmin(SoulAdminModel):
-    fieldsets = [('Name (**Note Will Be Capitalized)', {'fields': ['name']}),
+    fieldsets = [('Name (**Note Will Be Capitalized)', {'fields': ['key']}),
                  ('Value', {'fields': ['value']})]
-    list_display = ('id', 'name', 'value', 'created_at', 'created_by')
+    list_display = ('id', 'key', 'value', 'created_at', 'created_by')
     list_filter = ['created_at']
-    search_fields = ['first_name','middle_name', 'last_name']
     actions = ["export_csv"]
 
     # only index fields are allowed
-    LOOKUP_FIELDS = ['id', 'name']
+    LOOKUP_FIELDS = ['id', 'key']
     CONFIG_SEARCH_URL = '/admin/config/search/'
 
     def lookup_allowed(self, key, value):

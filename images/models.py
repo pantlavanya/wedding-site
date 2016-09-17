@@ -1,10 +1,8 @@
 from django.db import models
 from soul.models import SoulModel
 import uuid
-from PIL import Image
 from django.conf import settings
 import os
-
 
 def sort_files_by_extension(self, filename):
     fname, extension = os.path.splitext(filename)
@@ -28,6 +26,9 @@ class Images(SoulModel):
     type = models.CharField(max_length=50, null=True)
     dimensions = models.CharField(max_length=50, null=True)
     size = models.CharField(max_length=50, null=True)
+    is_active = models.BooleanField(default=False)
+    cron_checked = models.BooleanField(default=False)
+    cron_comment = models.TextField(null=True)
 
     class Meta:
         app_label = "images"

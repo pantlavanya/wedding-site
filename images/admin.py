@@ -6,7 +6,7 @@ from soul.admin import SoulAdminModel
 class ImagesAdmin(SoulAdminModel):
     fieldsets = [('Information', {'fields': ['uses']}),
                  ('Upload File', {'fields': ['path']})]
-    list_display = ('id', 'original_name', 'modified_name', 'type', 'dimensions', 'size', 'uses','created_at', 'created_by')
+    list_display = ('id', 'original_name', 'modified_name', 'type', 'cron_comment', 'cron_checked', 'uses','created_at', 'created_by', 'is_active')
     list_filter = ['created_at', 'type']
     search_fields = ['modified_name','type']
     actions = ["export_csv"]
