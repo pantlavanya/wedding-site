@@ -9,3 +9,5 @@ class CurrentUserMiddleware(object):
 
 def get_current_user():
     return _user.value
+
+

@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.http import Http404
-
+from soul.utils import export_csv, export_as_json, export_as_xml, export_as_xlsx
 
 # Register your models here.
 class SoulAdminModel(admin.ModelAdmin):
@@ -8,6 +8,7 @@ class SoulAdminModel(admin.ModelAdmin):
     LOOKUP_FIELDS = ['created_at','created_at__gte','created_at__lt']
 
     list_display = ('created_at','created_by')
+    actions = [export_csv, export_as_json, export_as_xml, export_as_xlsx]
 
     def lookup_allowed(self, key, value):
         if key in SoulAdminModel.LOOKUP_FIELDS:
@@ -26,4 +27,5 @@ class SoulAdminModel(admin.ModelAdmin):
         if 'delete_selected' in actions:
             del actions['delete_selected']
         return actions
+
 

@@ -2,6 +2,8 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
 from soul.models import SoulModel
+from soul.services import soul_email
+from django.contrib.auth.hashers import make_password
 
 # Create your models here.
 class Member(SoulModel):
@@ -50,6 +52,14 @@ class Member(SoulModel):
         return full_name
 
     full_member_name.short_description = 'Full Name'
+
+    def save(self, force_insert=False, force_update=False, using=None):
+        self.password = make_password(self.password)
+        soul_email("Member Registered!",self.email)
+        super(Member, self).save(force_insert, force_update, using)
+
+
+
 
 
 

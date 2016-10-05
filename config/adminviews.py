@@ -3,9 +3,13 @@ from django.db.models import Q
 from django.contrib import messages
 from django.http import HttpResponse, HttpResponseRedirect
 from soul.adminviews import SoulAdminSearchViews
+import logging
+
+logger = logging.getLogger(__name__)
 
 class ConfigSearchView(SoulAdminSearchViews):
     def get_context_data(self, **kwargs):
+        logger.debug('Something went wrong!')
         template_data = dict()
         template_data["search_name"] = "Config"
         search_params_list = [
