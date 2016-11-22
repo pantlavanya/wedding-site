@@ -144,6 +144,6 @@ EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'lavyse@gmail.com'
-EMAIL_HOST_PASSWORD = '[lavy!@#$].'
+EMAIL_HOST_PASSWORD = '****'
 DEFAULT_FROM_EMAIL = 'lavyse@gmail.com'
 SERVER_EMAIL = 'lavyse@gmail.com'
